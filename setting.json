@@ -1,0 +1,10 @@
+{
+  "setting" : {
+  "DB" : {
+    "ip": "localhost",
+    "port": "27017",
+    "login": "",
+    "password": ""
+    }
+  }
+}
