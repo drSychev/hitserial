@@ -1,0 +1,56 @@
+const Model  = require('../models/main')
+const createError = require('http-errors');
+function pagination(page,countPages,countItemsForPage){
+  if(page<= 2){
+    page = 3
+  }
+  let pagination = []
+ for (let  i = 1; i < countPages+1; i++) {
+
+   pagination[i] = +page + i - Math.round(countPages/2)
+ }
+ pagination[pagination.length] = Math.ceil(Model.allMedia()/countItemsForPage)
+ return pagination
+}
+exports.getMedia = function (req,res,next) {
+  let colItemPage = 20
+  let page = req.params['id'] ? req.params['id'] : 1
+  if(Number.isInteger(+page) && page>0){
+
+    let countSkip = page * colItemPage - colItemPage
+    Model.selectMedia(countSkip,function (err,media) {
+      Model.findAllSerials(500,function (err, serials) {
+        let data = media.map(function (media, i) {
+          try {
+            return {
+              title: media.title,
+              urlPoster: media.material_data.poster_url,
+              id: media._id
+            }
+          } catch (e) {
+            console.log('31',media._id);
+          }
+        })
+        res.render('index',{serials: serials ,data: data, title: "nrer", pages: pagination(page,5,colItemPage) })
+        // res.json(dat)
+      })
+    })
+  }
+  else {
+    next(createError(404))
+  }
+
+}
+exports.getSeral = function (req,res) {
+    Model.findAllSerials(500,function (err, serials) {
+    Model.findSerialById(req.params['id'],function (err,serial) {
+      res.render('item',{serials: serials, serial: serial})
+      // res.json(serial)
+    })
+  })
+}
+exports.getAllSerials = function (req,res) {
+}
+exports.test = function (req,res) {
+  res.json(Model.allMedia())
+}

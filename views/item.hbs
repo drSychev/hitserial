@@ -1,0 +1,29 @@
+          <div class="container m-0 mb-3 row  " style="background-color: #fff;">
+            <div class="col-md-5 col-12">
+              <img class="col-12 p-0" src="{{serial.material_data.poster_url}}" alt="Riverdale">
+            </div>
+            <div class="col-12 col-md-7 inform">
+              <dl>
+                <h2>{{serial.title}}</h2>
+                <dt>Выпущено:</dt>
+                <dd>{{serial.material_data.countries}} / {{serial.material_data.year}}</dd>
+                <dt>Оригинальное название :</dt>
+                <dd>{{serial.title_orig}}</dd>
+                <dt>Жанр:</dt>
+                <dd>{{serial.material_data.genres}}</dd>
+                <dt>В ролях:</dt>
+                <dd>{{serial.material_data.actors}}</dd>
+                <dt>Продолжительность</dt>
+                <dd>{{serial.material_data.duration}} мин.</dd>
+              </dl>
+            </div>
+            <div class="col-12">
+              <dl>
+                <dt>О сериале:</dt>
+                <dd>{{serial.material_data.description}}</dd>
+              </dl>
+            </div>
+            <div class="col-12">
+              <iframe src="{{serial.link}}" width="100%" height="404"  frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>
+            </div>
+          </div>

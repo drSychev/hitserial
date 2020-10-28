@@ -1,0 +1,139 @@
+body{
+  /* padding-top: 3.5rem; */
+  background-color: #ececec;
+}
+
+#navbar{
+  background-color: #30475e;
+}
+#navbar  form{
+  justify-content: center;
+}
+#navbar a{
+  color: #fff;
+}
+#navbar button{
+  border-color: #ffff;
+}
+#navbar  form button{
+  border-color: #ee6f57;
+  color: #fff;
+  background-color: #ee6f57;
+}
+#navbar  form button:focus{
+  z-index: 3;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 0);
+}
+#navbar form button:active{
+  z-index: 3;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 0);
+}
+.left-panel{
+  height: 90vh;
+}
+.left-panel ul.list-item{
+    overflow-y: auto;
+    height: calc(90vh - 320px);
+
+}
+
+.left-panel .popular h2{
+  margin: 15px 0px 10px 0;
+}
+.description{
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 5px 5px 10px 5px;
+  background-color: #fff;
+  height: 100%;
+
+}
+.description img{
+  width: 100%;
+  height: 100%;
+}
+.description a{
+  text-decoration: none;
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 5px;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  color: #495057;
+}
+.item{
+  padding: 0;
+  padding-top: 10px;
+  padding-right: 15px;
+}
+.pagination{
+  justify-content: center;
+  margin-top: 18px;
+}
+ul.pagination  li a {
+  background-color: #fff;
+  color: #000;
+}
+
+ul.pagination  li.active.page-item a{
+  background-color: #ee6f57;
+  color: #fff;
+  border-color: #ee6f57;
+}
+.page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 0);
+}
+.page-link:hover {
+    z-index: 2;
+    color: #000000;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+ ::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: #30475e;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #30475e;
+}
+@media (max-width: 768px) {
+
+
+  .left-panel ul.list-item {
+    overflow-y: auto;
+    height: 100vh;
+  }
+  .left-panel{
+    height: calc(100vh + 320px);
+  }
+}
+.img{
+  height: 90%;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .navbar-collapse.collapse{
+    display: flex;
+    justify-content: center;
+  }
+}

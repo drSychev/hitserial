@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel='stylesheet' href='/stylesheets/start_page.css' />
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-md navbar-light">
+      <a class="navbar-brand" href="/">Главная</a>
+      <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0 col-md-8">
+          <input class="form-control mr-2 mr-sm-2 col-8 col-md-6 mr-md-3" type="search" placeholder="Напишите название фильма или сериала" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container-sm">
+      <div class="row">
+        <div class="left-panel col-md-5 col-lg-3 mt-2">
+          <ul class="list-group list-item">
+            {{#each serials}}
+            <a href="../serial/{{_id}}" class="list-group-item list-group-item-action"title="{{title}}">{{title}}</a>
+          {{/each}}
+          </ul>
+          <div class="popular">
+            <h2>Популярное</h1>
+            <ul class="list-group mb-5">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Morbi leo risus</li>
+              <li class="list-group-item">Porta ac consectetur ac</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+        </div>
+        <div class="content col-md-7 col-lg-9 col-12 mt-2">
+          {{{body}}}
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
