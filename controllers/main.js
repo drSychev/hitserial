@@ -41,13 +41,19 @@ exports.getMedia = function (req,res,next) {
   }
 
 }
-exports.getSeral = function (req,res) {
+exports.getSeral = function (req,res,next) {
+  let str = req.params['id']
+  let result = str.match(/[a-z0-9]{24}/g);
+  if (result == str) {
     Model.findAllSerials(500,function (err, serials) {
     Model.findSerialById(req.params['id'],function (err,serial) {
       res.render('item',{serials: serials, serial: serial})
       // res.json(serial)
     })
   })
+}else{
+ next(createError(404))
+}
 }
 exports.getAllSerials = function (req,res) {
 }
