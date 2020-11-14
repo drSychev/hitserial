@@ -9,4 +9,5 @@ router.get('/',mainController.getMedia)
 router.get('/page/:id',mainController.getMedia)
 router.get('/test',mainController.test)
 router.get('/serial/:id',mainController.getSeral)
+router.get('/search/',mainController.search)
 module.exports = router;

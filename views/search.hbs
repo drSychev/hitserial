@@ -1,0 +1,39 @@
+{{#if resultSearch}}
+  <h1 class="mt-2 mb-3">Результаты по запросу: {{query}}</h1>
+{{else}}
+  <h1 class="mt-2 mb-3">По вашему запросу ничего не найдено</h1>
+{{/if}}
+<div class="row">
+  {{#each resultSearch}}
+  <div class="card container mb-3">
+    <div class="row no-gutters">
+      <div class=" pt-3 pb-3 col-md-3">
+        <img src="{{material_data.poster_url}}" class="card-img" alt="{{title}}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a  class=" card-title" href="../serial/{{_id}}">{{title}}</a>
+          <p class="card-text">
+            {{#if material_data.description}}
+            {{material_data.description}}
+            {{else}}
+            Описание отсутствует
+            {{/if}}
+            </p>
+          <p class="card-text">
+            <small class="text-muted">
+              {{#each this.translations}}
+                {{#if @last}}
+                  {{title}}
+                {{else}}
+                  {{title}},
+                {{/if}}
+              {{/each}}
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

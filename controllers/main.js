@@ -60,3 +60,11 @@ exports.getAllSerials = function (req,res) {
 exports.test = function (req,res) {
   res.json(Model.allMedia())
 }
+exports.search = function (req, res) {
+  Model.findAllSerials(500,function (err,serials) {
+    Model.fullTextSearch(req.query.string, function (err, resultSearch) {
+      res.render("search", {query: req.query["string"] , serials:serials, resultSearch:resultSearch})
+    })
+  })
+
+}
