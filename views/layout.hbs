@@ -33,16 +33,16 @@
             <a href="../serial/{{_id}}" class="list-group-item list-group-item-action"title="{{title}}">{{title}}</a>
           {{/each}}
           </ul>
+          {{#if popularSerials}}
           <div class="popular">
             <h2>Популярное</h1>
             <ul class="list-group mb-5">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              {{#each popularSerials}}
+              <a class="list-group-item list-group-item-action" href="..serial/{{_id}}">{{title}}</a>
+              {{/each}}
             </ul>
           </div>
+          {{/if}}
         </div>
         <div class="content col-md-7 col-lg-9 col-12 mt-2">
           {{{body}}}

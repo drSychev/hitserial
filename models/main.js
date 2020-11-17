@@ -36,3 +36,15 @@ exports.fullTextSearch = function (stringSearch, cb) {
 exports.allMedia = function () {
   return MongoClient.countFilms
 }
+exports.incrementReitingSerialOnSite = function(idSerial){
+  MongoClient.dbo.collection(collectionName).updateOne({_id: new ObjectId(idSerial)}, {$inc: {reiting: 1}},function (err) {
+    if(err) throw err
+  })
+}
+exports.selectPopular = function (limit,cb) {
+  MongoClient.dbo.collection(collectionName).find().limit(limit).sort({reiting: -1}).toArray(function (err,docs) {
+    if(err) throw err
+    cb(docs)
+  })
+
+}
