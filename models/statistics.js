@@ -11,3 +11,16 @@ exports.selectTTLUser = function (idSerial,userIP, cb) {
       cb(res)
   })
 }
+exports.addDataAboutUser = function (url, method, statusCode, query, ip, date) {
+  inObject = {
+    url: url,
+    method: method,
+    statusCode: statusCode,
+    query: query,
+    ip: ip,
+    date: date
+  }
+  MongoClient.dbo.collection('statistics').insertOne(inObject, function (err,res) {
+    if (err) throw err
+  })
+}
