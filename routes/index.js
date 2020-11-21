@@ -7,7 +7,9 @@ var mainController = require('../controllers/main');
 // });
 router.get('/',mainController.getMedia)
 router.get('/page/:id',mainController.getMedia)
-router.get('/test',mainController.test)
 router.get('/serial/:id',mainController.getSeral)
 router.get('/search/',mainController.search)
+router.get('/test', function (req,res) {
+  res.render('test',{layout: null})
+})
 module.exports = router;
