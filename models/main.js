@@ -1,8 +1,8 @@
 var MongoClient = require('../db')
 var {ObjectId} = require('mongodb')
-let collectionName = "hitserialsNew"
+let collectionName = "serials"
 exports.selectMedia = function (countSkip = 0 ,cb) {
-  MongoClient.dbo.collection(collectionName).find().skip(countSkip).limit(20).toArray(function (err,res) {
+  MongoClient.dbo.collection(collectionName).find().project({title:1, _id: 1,link_poster:1, link:1}).skip(countSkip).limit(20).toArray(function (err,res) {
     if(err) {
       throw err
     };
@@ -10,7 +10,7 @@ exports.selectMedia = function (countSkip = 0 ,cb) {
   });
 }
 exports.findAllSerials = function (limit ,cb) {
-  MongoClient.dbo.collection(collectionName).find().limit(limit).toArray(function (err,res) {
+  MongoClient.dbo.collection(collectionName).find().project({title:1, _id:1, link:1}).limit(limit).toArray(function (err,res) {
     if(err) {
       throw err
     };
@@ -18,11 +18,38 @@ exports.findAllSerials = function (limit ,cb) {
   });
 }
 exports.findSerialById =function (id,cb) {
-  MongoClient.dbo.collection(collectionName).findOne({_id: new ObjectId(id)},function (err,res) {
+  let reqest = [
+    {$match:{"_id": new ObjectId(id)}},
+    {$project: {
+      title: 1,
+      title_orig:1,
+      description:1,
+      link_poster:1,
+      premiereWorldCountry:1,
+      year:1,
+      season_count:1,
+      id_CDN:1,
+      genres:1,
+      tagline:1,
+      length: 1,
+      content_type:1,
+      translations:1,
+      iframe_src:1,
+      staff: {
+        $slice:[{
+          $filter:{
+            input: '$staff',
+            as:'staff',
+            cond:{
+              $eq:['$$staff.professionKey','ACTOR']}}}, 15]},
+              _id: 0}
+      }
+      ]
+  MongoClient.dbo.collection(collectionName).aggregate(reqest).toArray(function (err,res) {
     if(err) {
       throw err
     };
-    cb(err,res)
+    cb(err,res[0])
   });
 }
 exports.fullTextSearch = function (stringSearch, cb) {
@@ -42,9 +69,10 @@ exports.incrementReitingSerialOnSite = function(idSerial){
   })
 }
 exports.selectPopular = function (limit,cb) {
-  MongoClient.dbo.collection(collectionName).find().limit(limit).sort({reiting: -1}).toArray(function (err,docs) {
+  MongoClient.dbo.collection(collectionName).find().project({title:1, _id:1}).limit(limit).sort({reiting: -1}).toArray(function (err,docs) {
     if(err) throw err
     cb(docs)
   })
 
 }
+//[{$match:{}},{$project: {staff: {$slice:[{$filter:{input: '$staff',as:'staff',cond:{$eq:['$$staff.professionKey','ACTOR']}}}, 30]},_id: 0}}]

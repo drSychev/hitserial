@@ -3,9 +3,9 @@
   <div class="content mb-4 col-xl-3 col-lg-4  col-md-6 col-12">
     <div class="description">
       <div class="img">
-        <img src="{{urlPoster}}" alt="Riverdale">
+        <img src="{{link_poster}}" alt="Riverdale">
       </div>
-      <a href="../serial/{{id}}" class=""title="{{title}}">{{title}}</a>
+      <a href="../serial/{{_id}}" class=""title="{{title}}">{{title}}</a>
     </div>
   </div>
 {{/each}}
@@ -20,10 +20,5 @@
       {{#each pages}}
       <li class="page-item"><a class="page-link" href="../page/{{this}}">{{this}}</a></li>
     {{/each}}
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
     </ul>
   </nav>

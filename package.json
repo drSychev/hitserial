@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "pognali" : "nodemon ./bin/www",
+    "pognali": "nodemon ./bin/www",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "mongodb": "^3.6.2",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "request": "^2.88.2"
   }
 }

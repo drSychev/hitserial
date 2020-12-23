@@ -5,9 +5,9 @@ const url = `mongodb://${settingDB.ip}:27017/`;
   authSource:'admin',useUnifiedTopology: true }, function(err, db) {
   if (err) throw err;
   exports.dbo = db.db("hitserials");
-  db.db("hitserials").collection("hitserialsNew").createIndex({"title": "text"}, {"description": "text"})
+  db.db("hitserials").collection("serials").createIndex({"title": "text"})
   db.db("hitserials").collection("uniqueRating").createIndex({"createdAt": 1}, {expireAfterSeconds: 1200})
-  db.db("hitserials").collection("hitserialsNew").find().toArray(function (err,res) {
+  db.db("hitserials").collection("serials").find().toArray(function (err,res) {
     if(err) {
       throw err
     };

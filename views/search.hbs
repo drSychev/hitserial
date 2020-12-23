@@ -8,14 +8,14 @@
   <div class="card container mb-3">
     <div class="row no-gutters">
       <div class=" pt-3 pb-3 col-md-3">
-        <img src="{{material_data.poster_url}}" class="card-img" alt="{{title}}">
+        <img src="{{link_poster}}" class="card-img" alt="{{title}}">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <a  class=" card-title" href="../serial/{{_id}}">{{title}}</a>
           <p class="card-text">
-            {{#if material_data.description}}
-            {{material_data.description}}
+            {{#if description}}
+            {{description}}
             {{else}}
             Описание отсутствует
             {{/if}}
@@ -24,9 +24,9 @@
             <small class="text-muted">
               {{#each this.translations}}
                 {{#if @last}}
-                  {{title}}
+                  {{short_title}}
                 {{else}}
-                  {{title}},
+                  {{short_title}},
                 {{/if}}
               {{/each}}
             </small>

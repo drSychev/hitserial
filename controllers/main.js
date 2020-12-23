@@ -22,19 +22,7 @@ exports.getMedia = function (req,res,next) {
     Model.selectMedia(countSkip,function (err,media) {
       Model.findAllSerials(500,function (err, serials) {
         Model.selectPopular(5,function (popularSerials) {
-          let data = media.map(function (media, i) {
-            try {
-              return {
-                title: media.title,
-                urlPoster: media.material_data.poster_url,
-                id: media._id
-              }
-            } catch (e) {
-              console.log('31',media._id);
-            }
-          })
-          res.render('index',{popularSerials: popularSerials,  serials: serials ,data: data, title: "nrer", pages: pagination(page,5,colItemPage) })
-          // res.json(dat)
+          res.render('index',{ data:media, serials: serials,popularSerials:popularSerials, pages: pagination(page,5,colItemPage)})
         })
       })
     })
@@ -58,7 +46,7 @@ exports.getSeral = function (req,res,next) {
           }
         })
       res.render('item',{serials: serials, serial: serial})
-      // res.json(serial)
+      // res.json({_id:serial,id: req.params.id})
     })
   })
 }else{
